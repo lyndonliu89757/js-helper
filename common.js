@@ -85,5 +85,16 @@ export default {
           return v.toString(16)
       })
     }
+    
+    /* js后台报错界面提示警告 (Vue._isDebugging判断是否调试,可改为dev或prod) */
+    errorShow = () => {
+      window.onerror = function (msg, url, lineNo, columnNo, error) {
+        if (Vue._isDebugging) {
+          alert('Error: ' + msg + ' Script: ' + url + '\nPosition: ' + lineNo + ' / ' + columnNo
+              + '\nStackTrace: ' + error)
+          return false
+        }
+      }
+    }
   }
 }
